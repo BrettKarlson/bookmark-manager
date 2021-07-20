@@ -1,7 +1,11 @@
 require 'bookmark'
 
 describe Bookmark do
-  it 'returns a list of bookmarks' do
-    expect(subject.all).to eq([])
+  describe '.all' do
+    it 'returns all bookmarks' do
+      bookmarks = Bookmark.all
+      expect(bookmarks).to include('http://www.makersacademy.com')
+      expect(bookmarks).to include('http://www.github.com')      
+    end
   end
 end

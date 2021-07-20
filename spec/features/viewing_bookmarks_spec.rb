@@ -1,10 +1,17 @@
 feature 'Viewing bookmarks' do
-  scenario 'visit the index page' do
-    visit('/')
-    expect(page).to have_content 'Bookmark Manager'
+  feature 'visiting the homepage' do
+    scenario 'seeing the title' do
+      visit('/')
+      expect(page).to have_content 'Bookmark Manager'
   end
+end
+
+feature 'list of bookmarks' do
   scenario 'view the bookmarks' do
-    visit('/bookmarks')
-    expect(page).to have_content 'Bookmark 1'
+    visit('/')
+    click_button 'Bookmarks'
+    expect(page).to have_content 'http://www.makersacademy.com'
+    expect(page).to have_content 'http://www.github.com'
+    end
   end
 end

@@ -1,16 +1,9 @@
 class Bookmark
 
-  def self.create
-    @@bookmarklist = []
-  end
-
-  def self.all 
-    @@bookmarklist
-  end
-
-  def initialize
-    @@bookmarklist << self
-  end
-
-  
+  def self.all
+   [
+     'http://www.makersacademy.com',
+     'http://www.github.com'
+   ]
+  end 
 end
