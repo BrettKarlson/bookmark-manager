@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
 require 'sinatra/reloader'
 require_relative './lib/bookmark'
@@ -12,10 +14,22 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/bookmarks' do
-    p ENV
     @bookmarks = Bookmark.all
     erb :bookmarks
   end
 
-  run! if app_file == $0
+  get '/new' do
+    erb :new
+  end
+
+  post '/bookmark_add' do
+    p params
+    p 'Form data submitted to the /bookmarks route!'
+    url = params['url']
+    connection = PG.connect(dbname: 'bookmark_manager_test')
+    connection.exec("INSERT INTO bookmarks (url) VALUES('#{url}')")
+    redirect '/bookmarks'
+  end
+
+  run! if app_file == $PROGRAM_NAME
 end
