@@ -10,9 +10,9 @@ feature 'Viewing bookmarks' do
 
   feature 'list of bookmarks' do
     scenario 'view the bookmarks' do
-      Bookmark.create(url: 'http://www.makersacademy.com')
-      Bookmark.create(url: 'http://www.destroyallsoftware.com')
-      Bookmark.create(url: 'http://www.google.com')
+      Bookmark.create(title: 'makers', url: 'http://www.makersacademy.com')
+      Bookmark.create(title: 'Destroy', url: 'http://www.destroyallsoftware.com')
+      Bookmark.create(title: 'Google', url: 'http://www.google.com')
 
       visit('/')
       click_button 'Bookmarks'
