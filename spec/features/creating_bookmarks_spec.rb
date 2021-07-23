@@ -8,7 +8,6 @@ feature 'Adding a new bookmark' do
     fill_in('title', with: 'Example')
     click_button('Submit')
     Bookmark.create(title: 'Example', url: 'http://www.example.org')
-    expect(page).to have_content 'http://www.example.org'
+    expect(page).to have_link href: 'http://www.example.org'
   end
 end
-

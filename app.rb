@@ -23,16 +23,14 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmark_add' do
-    p params
-    p 'Form data submitted to the /bookmarks route!'
-    Bookmark.create( url: params[:url], title: params[:title] )
+    Bookmark.create(url: params[:url], title: params[:title])
     redirect '/bookmarks'
   end
 
   post '/bookmarks' do
-    Bookmark.create( url: params[:url], title: params[:title] )
+    Bookmark.create(url: params[:url], title: params[:title])
     redirect '/bookmarks'
-  end 
+  end
 
   run! if app_file == $PROGRAM_NAME
 end
